@@ -1,10 +1,10 @@
 package handlers
 
 import (
-	"encoding/binary"
 	"fmt"
 	"net"
 
+	"github.com/codecrafters-io/kafka-starter-go/utils"
 )
 
 type ApiHandler func(conn net.Conn, request []byte)
@@ -54,5 +54,5 @@ func handleConnectionRequests(conn net.Conn) {
 }
 
 func fetchApiKeyFromResponse(request []byte) int16 {
-	return int16(binary.BigEndian.Uint16(request[4:6]))
+	return int16(utils.ConvertToInt16(request[4:6]))
 }

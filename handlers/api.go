@@ -5,10 +5,11 @@ import (
 	"net"
 
 	"github.com/codecrafters-io/kafka-starter-go/pkg/api/apiVersions"
+	"github.com/codecrafters-io/kafka-starter-go/pkg/api/describeTopicPartitions"
 )
 
 func ApiVersionsController(conn net.Conn, request []byte) {
-	response, err := apiVersions.ParseRequest(conn, request)
+	response, err := apiVersions.ParseRequest(request)
 	if err != nil {
 		fmt.Printf("Error parsing request: %v\n", err)
 		return
@@ -23,7 +24,7 @@ func ApiVersionsController(conn net.Conn, request []byte) {
 }
 
 func DescribeTopicPartitionsController(conn net.Conn, request []byte) {
-	response, err := apiVersions.ParseRequest(conn, request)
+	response, err := describeTopicPartitions.ParseRequest(request)
 	if err != nil {
 		fmt.Printf("Error parsing request: %v\n", err)
 		return

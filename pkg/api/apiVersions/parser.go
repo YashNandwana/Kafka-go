@@ -1,10 +1,7 @@
 package apiVersions
 
-import (
-	"net"
-)
 
-func ParseRequest(conn net.Conn, request []byte) ([]byte, error) {
+func ParseRequest(request []byte) ([]byte, error) {
 	resp := make([]byte, 4)
 
 	// parse correlation_id
